@@ -89,31 +89,47 @@
 /root/.ppprc	--	system_u:object_r:pppd_etc_t:s0
 /sbin/.*getty	--	system_u:object_r:getty_exec_t:s0
 /root/.manpath	--	system_u:object_r:mandb_home_t:s0
+/usr/s?bin/lxc	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/s?bin/lxd	--	system_u:object_r:container_runtime_exec_t:s0
 /rhev/[^/]*/.*	system_u:object_r:mnt_t:s0
+/usr/s?bin/crun	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/s?bin/nodm	--	system_u:object_r:xdm_exec_t:s0
+/usr/s?bin/runc	--	system_u:object_r:container_runtime_exec_t:s0
 /media(/[^/]*)?	-d	system_u:object_r:mnt_t:s0
 /dev/n?pt[0-9]+	-c	system_u:object_r:tape_device_t:s0
 /dev/p[fg][0-3]	-b	system_u:object_r:removable_device_t:s0
 /media(/[^/]*)?	-l	system_u:object_r:mnt_t:s0
 /dev/s(ou)?nd/.*	-c	system_u:object_r:sound_device_t:s0
+/usr/s?bin/crio.*	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/s?bin/lxc-.*	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/s?bin/lxd-.*	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/s?bin/ocid.*	--	system_u:object_r:container_runtime_exec_t:s0
 /dev/n?z?qft[0-3]	-c	system_u:object_r:tape_device_t:s0
 /dev/s(cd|r)[^/]*	-b	system_u:object_r:removable_device_t:s0
 /usr/s?bin/gdm(3)?	--	system_u:object_r:xdm_exec_t:s0
 /dev/n?osst[0-3].*	-c	system_u:object_r:tape_device_t:s0
 /dev/n?tpqic[12].*	-c	system_u:object_r:tape_device_t:s0
+/usr/s?bin/docker.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/s?bin/lightdm*	--	system_u:object_r:xdm_exec_t:s0
 /dev/n?[hs]t[0-9].*	-c	system_u:object_r:tape_device_t:s0
 /usr/s?bin/[mxgkw]dm	--	system_u:object_r:xdm_exec_t:s0
+/usr/s?bin/fuidshift	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/s?bin/kubelet.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/s?bin/gdm-binary	--	system_u:object_r:xdm_exec_t:s0
+/usr/s?bin/hyperkube.*	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/s?bin/containerd.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/s?bin/mcollectived	--	system_u:object_r:openshift_initrc_exec_t:s0
+/usr/s?bin/docker-latest	--	system_u:object_r:container_runtime_exec_t:s0
 /dev/n?(raw)?[qr]ft[0-3]	-c	system_u:object_r:tape_device_t:s0
 /etc/a?quota\.(user|group)	--	system_u:object_r:quota_db_t:s0
+/usr/s?bin/docker-current	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/s?bin/lxdm(-binary)?	--	system_u:object_r:xdm_exec_t:s0
 /usr/s?bin/oo-lists-ports	--	system_u:object_r:openshift_net_read_exec_t:s0
 /var/a?quota\.(user|group)	--	system_u:object_r:quota_db_t:s0
 /usr/s?bin/(oo|rhc)-restorer	--	system_u:object_r:openshift_initrc_exec_t:s0
 /usr/s?bin/oo-admin-ctl-gears	--	system_u:object_r:openshift_initrc_exec_t:s0
 /usr/s?bin/(oo|rhc)-cgroup-read	--	system_u:object_r:openshift_cgroup_read_exec_t:s0
+/usr/s?bin/docker-novolume-plugin	--	system_u:object_r:container_auth_exec_t:s0
 /usr/s?bin/(oo|rhc)-restorer-wrapper.sh	--	system_u:object_r:openshift_initrc_exec_t:s0
 /dev/cu.*	-c	system_u:object_r:tty_device_t:s0
 /dev/fw.*	-c	system_u:object_r:usb_device_t:s0
@@ -197,6 +213,7 @@
 /etc/ssl(/.*)?	system_u:object_r:cert_t:s0
 /etc/tor(/.*)?	system_u:object_r:tor_etc_t:s0
 /etc/ups(/.*)?	system_u:object_r:nut_conf_t:s0
+/exports(/.*)?	system_u:object_r:container_var_lib_t:s0
 /opt/cvs(/.*)?	system_u:object_r:cvs_data_t:s0
 /sandbox(/.*)?	system_u:object_r:tmp_t:s0
 /stratis(/.*)?	system_u:object_r:stratisd_data_t:s0
@@ -324,6 +341,7 @@
 /dev/sclp[0-9]*	-c	system_u:object_r:vfio_device_t:s0
 /dev/vmcp[0-9]*	-c	system_u:object_r:vfio_device_t:s0
 /etc/abrt(/.*)?	system_u:object_r:abrt_etc_t:s0
+/etc/crio(/.*)?	system_u:object_r:container_config_t:s0
 /etc/cups(/.*)?	system_u:object_r:cupsd_etc_t:s0
 /etc/glpi(/.*)?	system_u:object_r:httpd_sys_rw_content_t:s0
 /etc/lirc(/.*)?	system_u:object_r:lircd_etc_t:s0
@@ -555,6 +573,7 @@
 /etc/cron\.d(/.*)?	system_u:object_r:system_cron_spool_t:s0
 /etc/dbus-1(/.*)?	system_u:object_r:dbusd_etc_t:s0
 /etc/dirsrv(/.*)?	system_u:object_r:dirsrv_config_t:s0
+/etc/docker(/.*)?	system_u:object_r:container_config_t:s0
 /etc/icinga(/.*)?	system_u:object_r:nagios_etc_t:s0
 /etc/kmscon(/.*)?	system_u:object_r:kmscon_conf_t:s0
 /etc/lvmtab(/.*)?	system_u:object_r:lvm_metadata_t:s0
@@ -704,10 +723,13 @@
 /var/ftp/etc(/.*)?	system_u:object_r:etc_t:s0
 /var/ftp/lib(/.*)?	system_u:object_r:lib_t:s0
 /var/lib/abl(/.*)?	system_u:object_r:var_auth_t:s0
+/var/lib/cni(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/dav(/.*)?	system_u:object_r:httpd_var_lib_t:s0
 /var/lib/dcc(/.*)?	system_u:object_r:dcc_var_t:s0
 /var/lib/dnf(/.*)?	system_u:object_r:rpm_var_lib_t:s0
 /var/lib/git(/.*)?	system_u:object_r:git_sys_content_t:s0
+/var/lib/lxc(/.*)?	system_u:object_r:container_var_lib_t:s0
+/var/lib/lxd(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/mpd(/.*)?	system_u:object_r:mpd_var_lib_t:s0
 /var/lib/nfs(/.*)?	system_u:object_r:var_lib_nfs_t:s0
 /var/lib/nsd(/.*)?	system_u:object_r:nsd_zone_t:s0
@@ -726,6 +748,8 @@
 /var/lib/xkb(/.*)?	system_u:object_r:xkb_var_lib_t:s0
 /var/lib/yum(/.*)?	system_u:object_r:rpm_var_lib_t:s0
 /var/log/log(/.*)?	system_u:object_r:virt_log_t:s0
+/var/log/lxc(/.*)?	system_u:object_r:container_log_t:s0
+/var/log/lxd(/.*)?	system_u:object_r:container_log_t:s0
 /var/log/mdm(/.*)?	system_u:object_r:xdm_log_t:s0
 /var/log/mpd(/.*)?	system_u:object_r:mpd_log_t:s0
 /var/log/pcp(/.*)?	system_u:object_r:pcp_log_t:s0
@@ -757,17 +781,24 @@
 /var/run/gdm(3)?\.pid	--	system_u:object_r:xdm_var_run_t:s0
 /etc/profile.d(/.*)?	system_u:object_r:bin_t:s0
 /etc/rsyslog.d(/.*)?	system_u:object_r:syslog_conf_t:s0
+/usr/local/s?bin/crun	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/local/s?bin/runc	--	system_u:object_r:container_runtime_exec_t:s0
 /var/run/rpc.statd\.pid	--	system_u:object_r:rpcbind_var_run_t:s0
 /root/\.gconf(d)?(/.*)?	system_u:object_r:gconf_home_t:s0
 /var/lib/gdm(3)?(/.*)?	system_u:object_r:xdm_var_lib_t:s0
 /var/log/gdm(3)?(/.*)?	system_u:object_r:xserver_log_t:s0
 /var/run/gdm(3)?(/.*)?	system_u:object_r:xdm_var_run_t:s0
 /opt/google/[^/]*/.*\.so	--	system_u:object_r:textrel_shlib_t:s0
+/usr/local/s?bin/crio.*	--	system_u:object_r:container_runtime_exec_t:s0
 /var/mailman.*/bin(/.*)?	system_u:object_r:bin_t:s0
+/usr/local/s?bin/docker.*	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/local/s?bin/kubelet.*	--	system_u:object_r:container_runtime_exec_t:s0
 /etc/amanda/.*/index(/.*)?	system_u:object_r:amanda_data_t:s0
 /usr/mailman.*/mail/wrapper	--	system_u:object_r:mailman_mail_exec_t:s0
 /etc/mcelog/.*-error-trigger	--	system_u:object_r:bin_t:s0
+/usr/local/s?bin/hyperkube.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/lib/ld-[^/]*\.so(\.[^/]*)*	--	system_u:object_r:ld_so_t:s0
+/usr/local/s?bin/containerd.*	--	system_u:object_r:container_runtime_exec_t:s0
 /etc/amanda/.*/tapelist(/.*)?	system_u:object_r:amanda_data_t:s0
 /usr/lib/qt-.*/etc/settings(/.*)?	system_u:object_r:xdm_var_run_t:s0
 /opt/altera9.1/quartus/linux/libccl_err\.so	--	system_u:object_r:textrel_shlib_t:s0
@@ -876,6 +907,7 @@
 /var/lib/news(/.*)?	system_u:object_r:innd_var_lib_t:s0
 /var/lib/nova(/.*)?	system_u:object_r:nova_var_lib_t:s0
 /var/lib/ntop(/.*)?	system_u:object_r:ntop_var_lib_t:s0
+/var/lib/ocid(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/pcsd(/.*)?	system_u:object_r:cluster_var_lib_t:s0
 /var/lib/psad(/.*)?	system_u:object_r:psad_var_lib_t:s0
 /var/lib/rhsm(/.*)?	system_u:object_r:rhsmcertd_var_lib_t:s0
@@ -891,6 +923,7 @@
 /var/lib/xend(/.*)?	system_u:object_r:xend_var_lib_t:s0
 /var/lib/xorg(/.*)?	system_u:object_r:xserver_var_lib_t:s0
 /var/lock/lvm(/.*)?	system_u:object_r:lvm_lock_t:s0
+/var/lock/lxc(/.*)?	system_u:object_r:container_lock_t:s0
 /var/lock/ppp(/.*)?	system_u:object_r:pppd_lock_t:s0
 /var/log/aide(/.*)?	system_u:object_r:aide_log_t:s0
 /var/log/ctdb(/.*)?	system_u:object_r:cluster_var_log_t:s0
@@ -901,6 +934,7 @@
 /var/log/news(/.*)?	system_u:object_r:innd_log_t:s0
 /var/log/nova(/.*)?	system_u:object_r:nova_log_t:s0
 /var/log/pcsd(/.*)?	system_u:object_r:cluster_var_log_t:s0
+/var/log/pods(/.*)?	system_u:object_r:container_log_t:s0
 /var/log/psad(/.*)?	system_u:object_r:psad_var_log_t:s0
 /var/log/rhsm(/.*)?	system_u:object_r:rhsmcertd_log_t:s0
 /var/log/smsd(/.*)?	system_u:object_r:smsd_log_t:s0
@@ -910,6 +944,7 @@
 /var/net-snmp(/.*)?	system_u:object_r:snmpd_var_lib_t:s0
 /var/run/abrt(/.*)?	system_u:object_r:abrt_var_run_t:s0
 /var/run/bind(/.*)?	system_u:object_r:named_var_run_t:s0
+/var/run/crio(/.*)?	system_u:object_r:container_var_run_t:s0
 /var/run/ctdb(/.*)?	system_u:object_r:ctdbd_var_run_t:s0
 /var/run/cups(/.*)?	system_u:object_r:cupsd_var_run_t:s0
 /var/run/dbus(/.*)?	system_u:object_r:system_dbusd_var_run_t:s0
@@ -1283,6 +1318,8 @@
 /etc/\.snapshots(/.*)?	system_u:object_r:snapperd_data_t:s0
 /etc/certmaster(/.*)?	system_u:object_r:certmaster_etc_rw_t:s0
 /etc/conntrackd(/.*)?	system_u:object_r:conntrackd_conf_t:s0
+/etc/containerd(/.*)?	system_u:object_r:container_config_t:s0
+/etc/kubernetes(/.*)?	system_u:object_r:kubernetes_file_t:s0
 /etc/lightsquid(/.*)?	system_u:object_r:squid_conf_t:s0
 /etc/lvm/backup(/.*)?	system_u:object_r:lvm_metadata_t:s0
 /etc/modprobe\.d(/.*)?	system_u:object_r:modules_conf_t:s0
@@ -1300,6 +1337,7 @@
 /etc/watchdog\.d(/.*)?	system_u:object_r:watchdog_unconfined_exec_t:s0
 /etc/zabbix/web(/.*)?	system_u:object_r:httpd_sys_rw_content_t:s0
 /opt/zimbra/log(/.*)?	system_u:object_r:var_log_t:s0
+/srv/containers(/.*)?	system_u:object_r:container_file_t:s0
 /tmp/\.font-unix(/.*)?	system_u:object_r:user_fonts_t:s0
 /usr/\.snapshots(/.*)?	system_u:object_r:snapperd_data_t:s0
 /usr/lib/apache(/.*)?	system_u:object_r:httpd_modules_t:s0
@@ -1326,6 +1364,7 @@
 /var/lib/condor(/.*)?	system_u:object_r:condor_var_lib_t:s0
 /var/lib/dhcpcd(/.*)?	system_u:object_r:dhcpc_state_t:s0
 /var/lib/dirsrv(/.*)?	system_u:object_r:dirsrv_var_lib_t:s0
+/var/lib/docker(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/epylog(/.*)?	system_u:object_r:logwatch_cache_t:s0
 /var/lib/fprint(/.*)?	system_u:object_r:fprintd_var_lib_t:s0
 /var/lib/glance(/.*)?	system_u:object_r:glance_var_lib_t:s0
@@ -1338,6 +1377,7 @@
 /var/lib/mythtv(/.*)?	system_u:object_r:mythtv_var_lib_t:s0
 /var/lib/naemon(/.*)?	system_u:object_r:naemon_var_lib_t:s0
 /var/lib/opa-fm(/.*)?	system_u:object_r:opafm_var_lib_t:s0
+/var/lib/origin(/.*)?	system_u:object_r:container_file_t:s0
 /var/lib/pcmcia(/.*)?	system_u:object_r:cardmgr_var_run_t:s0
 /var/lib/pgsql/.*\.log	system_u:object_r:postgresql_log_t:s0
 /var/lib/pki-ca(/.*)?	system_u:object_r:pki_tomcat_var_lib_t:s0
@@ -1384,6 +1424,7 @@
 /var/run/devkit(/.*)?	system_u:object_r:devicekit_var_run_t:s0
 /var/run/dhcpcd(/.*)?	system_u:object_r:dhcpc_var_run_t:s0
 /var/run/dirsrv(/.*)?	system_u:object_r:dirsrv_var_run_t:s0
+/var/run/docker(/.*)?	system_u:object_r:container_var_run_t:s0
 /var/run/gather(/.*)?	system_u:object_r:sblim_var_run_t:s0
 /var/run/glance(/.*)?	system_u:object_r:glance_var_run_t:s0
 /var/run/motd\.d(/.*)?	system_u:object_r:pam_var_run_t:s0
@@ -1561,6 +1602,7 @@
 /var/lib/haproxy(/.*)?	system_u:object_r:haproxy_var_lib_t:s0
 /var/lib/ipsilon(/.*)?	system_u:object_r:httpd_var_lib_t:s0
 /var/lib/jabberd(/.*)?	system_u:object_r:jabberd_var_lib_t:s0
+/var/lib/kubelet(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/libuuid(/.*)?	system_u:object_r:uuidd_var_lib_t:s0
 /var/lib/libvirt(/.*)?	system_u:object_r:virt_var_lib_t:s0
 /var/lib/lightdm(/.*)?	system_u:object_r:xdm_var_lib_t:s0
@@ -1626,6 +1668,7 @@
 /var/run/console(/.*)?	system_u:object_r:pam_var_console_t:s0
 /var/run/couchdb(/.*)?	system_u:object_r:couchdb_var_run_t:s0
 /var/run/courier(/.*)?	system_u:object_r:courier_var_run_t:s0
+/var/run/flannel(/.*)?	system_u:object_r:container_var_run_t:s0
 /var/run/hostapd(/.*)?	system_u:object_r:hostapd_var_run_t:s0
 /var/run/icecast(/.*)?	system_u:object_r:icecast_var_run_t:s0
 /var/run/krb5kdc(/.*)?	system_u:object_r:krb5kdc_var_run_t:s0
@@ -1666,11 +1709,13 @@
 /etc/cron\.daily/[sm]locate	--	system_u:object_r:locate_exec_t:s0
 /usr/lib/libmyth[^/]+\.so.*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/mailman.*/cron/.*	--	system_u:object_r:mailman_queue_exec_t:s0
+/usr/lib/docker/[^/]*plugin	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/lib/mozilla[^/]*/reg.+	--	system_u:object_r:mozilla_exec_t:s0
 /usr/share/tucan.*/tucan.py	--	system_u:object_r:bin_t:s0
 /var/lib/amanda/[^/]+(/.*)?	system_u:object_r:amanda_data_t:s0
 /usr/lib/mailman.*/cgi-bin/.*	--	system_u:object_r:mailman_cgi_exec_t:s0
 /usr/lib/modules(/.*)/vmlinuz	--	system_u:object_r:usr_t:s0
+/var/lib/docker/.*/config\.env	system_u:object_r:container_ro_file_t:s0
 /usr/lib/cedega/.+\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/libADM5.*\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/mailman.*/bin/qrunner	--	system_u:object_r:mailman_queue_exec_t:s0
@@ -1709,6 +1754,8 @@
 /usr/bin/updatedb.*	--	system_u:object_r:locate_exec_t:s0
 /usr/lib/libjs\.so.*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/lvm-200/.*	--	system_u:object_r:lvm_exec_t:s0
+/usr/libexec/lxc/.*	--	system_u:object_r:container_runtime_exec_t:s0
+/usr/libexec/lxd/.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/libexec/qemu.*	--	system_u:object_r:qemu_exec_t:s0
 /usr/sbin/amavisd.*	--	system_u:object_r:antivirus_exec_t:s0
 /usr/sbin/losetup.*	--	system_u:object_r:fsadm_exec_t:s0
@@ -1814,6 +1861,7 @@
 /var/lib/polkit-1(/.*)?	system_u:object_r:policykit_var_lib_t:s0
 /var/lib/postgrey(/.*)?	system_u:object_r:postgrey_var_lib_t:s0
 /var/lib/rabbitmq(/.*)?	system_u:object_r:rabbitmq_var_lib_t:s0
+/var/lib/registry(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/rkhunter(/.*)?	system_u:object_r:rkhunter_var_lib_t:s0
 /var/lib/sepolgen(/.*)?	system_u:object_r:selinux_config_t:s0
 /var/lib/smstools(/.*)?	system_u:object_r:smsd_var_lib_t:s0
@@ -1953,6 +2001,7 @@
 /usr/lib/acroread/.+\.api	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/bluetooth(/.*)?	--	system_u:object_r:bin_t:s0
 /usr/lib/debug/bin(/.*)?	--	system_u:object_r:bin_t:s0
+/etc/docker-latest(/.*)?	system_u:object_r:container_config_t:s0
 /etc/likewise-open(/.*)?	system_u:object_r:likewise_etc_t:s0
 /etc/munin/plugins(/.*)?	system_u:object_r:bin_t:s0
 /etc/nsd/secondary(/.*)?	system_u:object_r:nsd_zone_t:s0
@@ -2044,6 +2093,7 @@
 /var/lib/syslog-ng.persist	--	system_u:object_r:syslogd_var_lib_t:s0
 /etc/sysconfig/ip6?tables.*	--	system_u:object_r:system_conf_t:s0
 /usr/sbin/reiserfs(ck|tune)	--	system_u:object_r:fsadm_exec_t:s0
+/usr/bin/container[^/]*plugin	--	system_u:object_r:container_runtime_exec_t:s0
 /etc/sysconfig/ip6?tables\.save	--	system_u:object_r:system_conf_t:s0
 /usr/sbin/sendmail(\.sendmail)?	--	system_u:object_r:sendmail_exec_t:s0
 /usr/lib/xulrunner[^/]*/updater	--	system_u:object_r:bin_t:s0
@@ -2144,6 +2194,8 @@
 /var/lib/callweaver(/.*)?	system_u:object_r:callweaver_var_lib_t:s0
 /var/lib/certmaster(/.*)?	system_u:object_r:certmaster_var_lib_t:s0
 /var/lib/certmonger(/.*)?	system_u:object_r:certmonger_var_lib_t:s0
+/var/lib/containerd(/.*)?	system_u:object_r:container_var_lib_t:s0
+/var/lib/containers(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/ddt-client(/.*)?	system_u:object_r:ddclient_var_lib_t:s0
 /var/lib/dspam/data(/.*)?	system_u:object_r:dspam_rw_content_t:s0
 /var/lib/ipa-client(/.*)?	system_u:object_r:realmd_var_lib_t:s0
@@ -2160,6 +2212,7 @@
 /var/log/callweaver(/.*)?	system_u:object_r:callweaver_log_t:s0
 /var/log/certmaster(/.*)?	system_u:object_r:certmaster_var_log_t:s0
 /var/log/conman\.old(/.*)?	system_u:object_r:conman_log_t:s0
+/var/log/containers(/.*)?	system_u:object_r:container_log_t:s0
 /var/log/freeradius(/.*)?	system_u:object_r:radiusd_log_t:s0
 /var/log/pnp4nagios(/.*)?	system_u:object_r:nagios_log_t:s0
 /var/log/postgresql(/.*)?	system_u:object_r:postgresql_log_t:s0
@@ -2172,6 +2225,8 @@
 /var/run/callweaver(/.*)?	system_u:object_r:callweaver_var_run_t:s0
 /var/run/cloud-init(/.*)?	system_u:object_r:net_conf_t:s0
 /var/run/cockpit-ws(/.*)?	system_u:object_r:cockpit_var_run_t:s0
+/var/run/containerd(/.*)?	system_u:object_r:container_var_run_t:s0
+/var/run/containers(/.*)?	system_u:object_r:container_var_run_t:s0
 /var/run/multipathd(/.*)?	system_u:object_r:lvm_var_run_t:s0
 /var/run/opendnssec(/.*)?	system_u:object_r:opendnssec_var_run_t:s0
 /var/run/pki/tomcat(/.*)?	system_u:object_r:pki_tomcat_var_run_t:s0
@@ -2184,6 +2239,7 @@
 /var/spool/cups-pdf(/.*)?	system_u:object_r:print_spool_t:s0
 /var/spool/opendkim(/.*)?	system_u:object_r:dkim_milter_data_t:s0
 /var/spool/plymouth(/.*)?	system_u:object_r:plymouthd_spool_t:s0
+/var/srv/containers(/.*)?	system_u:object_r:container_file_t:s0
 /var/www/html/munin(/.*)?	system_u:object_r:munin_content_t:s0
 /var/www/moodledata(/.*)?	system_u:object_r:httpd_sys_rw_content_t:s0
 /var/log/cloud-init.*\.log.*	--	system_u:object_r:cloud_log_t:s0
@@ -2217,6 +2273,7 @@
 /usr/lib/apache-ssl/.+	--	system_u:object_r:httpd_exec_t:s0
 /usr/lib/apt/methods.+	--	system_u:object_r:bin_t:s0
 /usr/lib/libmpeg2\.so.*	--	system_u:object_r:textrel_shlib_t:s0
+/usr/libexec/docker/.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/libexec/polkitd.*	--	system_u:object_r:policykit_exec_t:s0
 /usr/sbin/traceroute.*	--	system_u:object_r:traceroute_exec_t:s0
 /usr/share/mc/extfs/.*	--	system_u:object_r:bin_t:s0
@@ -2282,6 +2339,7 @@
 /var/lib/amanda/\.ssh(/.*)?	system_u:object_r:ssh_home_t:s0
 /var/lib/boinc/slots(/.*)?	system_u:object_r:boinc_project_var_lib_t:s0
 /var/lib/dkim-milter(/.*)?	system_u:object_r:dkim_milter_data_t:s0
+/var/lib/docker/init(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/ldap/replog(/.*)?	system_u:object_r:slapd_replog_t:s0
 /var/lib/letsencrypt(/.*)?	system_u:object_r:cert_t:s0
 /var/lib/openvswitch(/.*)?	system_u:object_r:openvswitch_var_lib_t:s0
@@ -2324,10 +2382,13 @@
 /emul/ia32-linux/usr(/.*)?/java/.*\.jar	--	system_u:object_r:lib_t:s0
 /emul/ia32-linux/usr(/.*)?/java/.*\.jsa	--	system_u:object_r:lib_t:s0
 /var/lib/openshift/a?quota\.(user|group)	--	system_u:object_r:quota_db_t:s0
+/var/lib/containerd/[^/]*/sandboxes(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containerd/[^/]*/snapshots(/.*)?	system_u:object_r:container_ro_file_t:s0
 /usr/lib/thunderbird.*/mozilla-xremote-client	--	system_u:object_r:bin_t:s0
 /var/lib/stickshift/.stickshift-proxy.d(/.*)?	system_u:object_r:etc_t:s0
 /emul/ia32-linux/usr(/.*)?/java/.+\.so(\.[^/]*)*	--	system_u:object_r:lib_t:s0
 /emul/ia32-linux/lib(/.*)?/ld-[^/]*\.so(\.[^/]*)*	--	system_u:object_r:ld_so_t:s0
+/var/run/containerd/[^/]*/sandboxes/[^/]*/shm(/.*)?	system_u:object_r:container_runtime_tmpfs_t:s0
 /emul/ia32-linux/usr(/.*)?/lib(/.*)?/ld-[^/]*\.so(\.[^/]*)*	system_u:object_r:ld_so_t:s0
 /etc/X11/wdm/Xstartup.*	--	system_u:object_r:xsession_exec_t:s0
 /etc/ntp/step-tickers.*	--	system_u:object_r:ntp_conf_t:s0
@@ -2384,6 +2445,7 @@
 /var/lib/condor/spool(/.*)?	system_u:object_r:condor_var_lib_t:s0
 /var/lib/courier-imap(/.*)?	system_u:object_r:courier_var_lib_t:s0
 /var/lib/graphite-web(/.*)?	system_u:object_r:httpd_sys_rw_content_t:s0
+/var/lib/kubelet/pods(/.*)?	system_u:object_r:container_file_t:s0
 /var/lib/libvirt/boot(/.*)?	system_u:object_r:virt_content_t:s0
 /var/lib/libvirt/isos(/.*)?	system_u:object_r:virt_content_t:s0
 /var/lib/libvirt/qemu(/.*)?	system_u:object_r:qemu_var_run_t:s0
@@ -2481,6 +2543,7 @@
 /var/cache/php-mmcache(/.*)?	system_u:object_r:httpd_cache_t:s0
 /var/dnscache/log/main(/.*)?	system_u:object_r:var_log_t:s0
 /var/lib/avahi-autoipd(/.*)?	system_u:object_r:avahi_var_lib_t:s0
+/var/lib/docker-latest(/.*)?	system_u:object_r:container_var_lib_t:s0
 /var/lib/gitolite/\.ssh(/.*)?	system_u:object_r:ssh_home_t:s0
 /var/lib/libvirt/lockd(/.*)?	system_u:object_r:virt_var_lockd_t:s0
 /var/lib/likewise-open(/.*)?	system_u:object_r:likewise_var_lib_t:s0
@@ -2504,6 +2567,7 @@
 /var/log/roundcubemail(/.*)?	system_u:object_r:httpd_log_t:s0
 /var/named/chroot/proc(/.*)?	<<none>>
 /var/run/chrony-helper(/.*)?	system_u:object_r:chronyd_var_run_t:s0
+/var/run/docker-client(/.*)?	system_u:object_r:container_var_run_t:s0
 /var/run/ipa_memcached(/.*)?	system_u:object_r:memcached_var_run_t:s0
 /var/run/mirrormanager(/.*)?	system_u:object_r:mirrormanager_var_run_t:s0
 /var/run/pam_timestamp(/.*)?	system_u:object_r:pam_var_run_t:s0
@@ -2520,6 +2584,7 @@
 /usr/lib/google-earth/.*\.so.*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/helix/codecs/[^/]*\.so	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/xorg/libGL\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
+/usr/local/lib/docker/[^/]*plugin	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/share/Pegasus/mof(/.*)?/.*\.mof	system_u:object_r:pegasus_mof_t:s0
 /usr/share/doc/mailman.*/mm-handler.*	--	system_u:object_r:mailman_mail_exec_t:s0
 /usr/lib/vmware-tools/(s)?bin32(/.*)?	system_u:object_r:bin_t:s0
@@ -2575,9 +2640,11 @@
 /var/lib/NetworkManager(/.*)?	system_u:object_r:NetworkManager_var_lib_t:s0
 /var/lib/boinc/projects(/.*)?	system_u:object_r:boinc_project_var_lib_t:s0
 /var/lib/condor/execute(/.*)?	system_u:object_r:condor_var_lib_t:s0
+/var/lib/docker/overlay(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/gitolite3/\.ssh(/.*)?	system_u:object_r:ssh_home_t:s0
 /var/lib/libvirt/images(/.*)?	system_u:object_r:virt_image_t:s0
 /var/lib/nfs/rpc_pipefs(/.*)?	<<none>>
+/var/lib/ocid/sandboxes(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/pgsql/data/log(/.*)?	system_u:object_r:postgresql_log_t:s0
 /var/lib/pki-ocsp/alias(/.*)?	system_u:object_r:pki_tomcat_cert_t:s0
 /var/lib/pki/pki-tomcat(/.*)?	system_u:object_r:pki_tomcat_var_lib_t:s0
@@ -2595,6 +2662,7 @@
 /var/opt/quest/vas/vasd(/.*)?	system_u:object_r:var_auth_t:s0
 /var/run/NetworkManager(/.*)?	system_u:object_r:NetworkManager_var_run_t:s0
 /var/run/corosync-qnetd(/.*)?	system_u:object_r:cluster_var_run_t:s0
+/var/run/docker/plugins(/.*)?	system_u:object_r:container_plugin_var_run_t:s0
 /var/run/libvirt/common(/.*)?	system_u:object_r:virt_common_var_run_t:s0
 /var/run/openvpn-server(/.*)?	system_u:object_r:openvpn_var_run_t:s0
 /var/run/samba/winbindd(/.*)?	system_u:object_r:winbind_var_run_t:s0
@@ -2619,6 +2687,7 @@
 /var/lib/misc/syslog-ng.persist-?	--	system_u:object_r:syslogd_var_lib_t:s0
 /var/lib/nxserver/home/.ssh(/.*)?	system_u:object_r:nx_server_home_ssh_t:s0
 /usr/lib/dracut/modules.d/.*\.service	system_u:object_r:systemd_unit_file_t:s0
+/var/lib/docker-latest/.*/config\.env	system_u:object_r:container_ro_file_t:s0
 /opt/VBoxGuestAdditions.*/lib/VBox.*\.so	--	system_u:object_r:textrel_shlib_t:s0
 /sysroot/ostree/deploy/.*-atomic/deploy(/.*)?	system_u:object_r:root_t:s0
 /etc/rc\.d/init\.d/neutron.*	--	system_u:object_r:neutron_initrc_exec_t:s0
@@ -2649,6 +2718,9 @@
 /usr/share/smokeping/cgi(/.*)?	system_u:object_r:smokeping_cgi_script_exec_t:s0
 /var/lib/AccountsService(/.*)?	system_u:object_r:accountsd_var_lib_t:s0
 /var/lib/containers/home(/.*)?	system_u:object_r:openshift_var_lib_t:s0
+/var/lib/docker/overlay2(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/kata-containers(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/kubernetes/pods(/.*)?	system_u:object_r:container_file_t:s0
 /var/lib/milter-greylist(/.*)?	system_u:object_r:greylist_milter_data_t:s0
 /var/lib/min-cloud-agent(/.*)?	system_u:object_r:cloud_var_lib_t:s0
 /var/lib/openldap-slurpd(/.*)?	system_u:object_r:slapd_db_t:s0
@@ -2661,6 +2733,7 @@
 /var/log/insights-client(/.*)?	system_u:object_r:insights_client_var_log_t:s0
 /var/run/DeviceKit-disks(/.*)?	system_u:object_r:devicekit_var_run_t:s0
 /var/run/PackageKit/udev(/.*)?	system_u:object_r:udev_var_run_t:s0
+/var/run/kata-containers(/.*)?	system_u:object_r:container_kvm_var_run_t:s0
 /var/run/libvirt-sandbox(/.*)?	system_u:object_r:virt_lxc_var_run_t:s0
 /var/run/libvirt/network(/.*)?	system_u:object_r:dnsmasq_var_run_t:s0
 /var/run/milter-greylist(/.*)?	system_u:object_r:greylist_milter_data_t:s0
@@ -2744,7 +2817,9 @@
 /etc/rc\.d/init\.d/shorewall.*	--	system_u:object_r:shorewall_initrc_exec_t:s0
 /usr/lib/libfglrx_gamma\.so.*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/libsipphoneapi\.so.*	--	system_u:object_r:textrel_shlib_t:s0
+/usr/libexec/docker/docker.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/libexec/nm-dispatcher.*	--	system_u:object_r:NetworkManager_exec_t:s0
+/usr/local/libexec/docker/.*	--	system_u:object_r:container_runtime_exec_t:s0
 /var/lib/pqsql/\.Xauthority.*	--	system_u:object_r:xauth_home_t:s0
 /var/log/zarafa/dagent\.log.*	--	system_u:object_r:zarafa_deliver_log_t:s0
 /var/log/zarafa/search\.log.*	--	system_u:object_r:zarafa_indexer_log_t:s0
@@ -2774,6 +2849,8 @@
 /usr/share/shorewall-shell(/.*)?	system_u:object_r:bin_t:s0
 /usr/share/shorewall6-lite(/.*)?	system_u:object_r:bin_t:s0
 /usr/share/vhostmd/scripts(/.*)?	system_u:object_r:bin_t:s0
+/var/cache/kata-containers(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containers/atomic(/.*)?	<<none>>
 /var/lib/pgsql/data/pg_log(/.*)?	system_u:object_r:postgresql_log_t:s0
 /var/lib/xfsdump/inventory(/.*)?	system_u:object_r:amanda_var_lib_t:s0
 /var/log/dirsrv/admin-serv(/.*)?	system_u:object_r:httpd_log_t:s0
@@ -2795,6 +2872,7 @@
 /etc/systemd/system/cockpit.*	--	system_u:object_r:cockpit_unit_file_t:s0
 /usr/lib/NetworkManager/nm\-.*	--	system_u:object_r:bin_t:s0
 /usr/lib/systemd/system/atd.*	--	system_u:object_r:crond_unit_file_t:s0
+/usr/lib/systemd/system/lxd.*	--	system_u:object_r:container_unit_file_t:s0
 /usr/lib/systemd/system/nfs.*	--	system_u:object_r:nfsd_unit_file_t:s0
 /usr/lib/systemd/system/nmb.*	--	system_u:object_r:samba_unit_file_t:s0
 /usr/lib/systemd/system/nut.*	--	system_u:object_r:nut_unit_file_t:s0
@@ -2830,6 +2908,8 @@
 /usr/local/linuxprinter/ppd(/.*)?	system_u:object_r:cupsd_rw_etc_t:s0
 /usr/share/prewikka/cgi-bin(/.*)?	system_u:object_r:prewikka_script_exec_t:s0
 /var/cache/php-eaccelerator(/.*)?	system_u:object_r:httpd_cache_t:s0
+/var/lib/containers/overlay(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/docker-latest/init(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/ipa/pki-ca/publish(/.*)?	system_u:object_r:pki_tomcat_cert_t:s0
 /var/lib/munin/plugin-state(/.*)?	system_u:object_r:munin_plugin_state_t:s0
 /var/lib/openshift/\.httpd\.d(/.*)?	system_u:object_r:httpd_config_t:s0
@@ -2842,8 +2922,11 @@
 /var/www/html/owncloud/data(/.*)?	system_u:object_r:httpd_sys_rw_content_t:s0
 /lib/systemd/system/sensord.service	--	system_u:object_r:sensord_unit_file_t:s0
 /usr/lib/systemd/system/sbd.service	--	system_u:object_r:sbd_unit_file_t:s0
+/var/lib/docker/containers/.*/hosts	system_u:object_r:container_ro_file_t:s0
 /usr/lib/sasl2/libsasldb\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/libcncpmslld328\.so(\.[^/]*)*	system_u:object_r:textrel_shlib_t:s0
+/var/lib/docker/containers/.*/.*\.log	system_u:object_r:container_log_t:s0
+/var/lib/docker/containers/.*/hostname	system_u:object_r:container_ro_file_t:s0
 /var/lib/VBoxGuestAdditions.*/lib/.*\.so	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/systemd/system/abrt.*	--	system_u:object_r:abrt_unit_file_t:s0
 /usr/lib/systemd/system/alsa.*	--	system_u:object_r:alsa_unit_file_t:s0
@@ -2878,6 +2961,7 @@
 /usr/share/ghostscript/fonts(/.*)?	system_u:object_r:fonts_t:s0
 /var/lib/aeolus-configserver(/.*)?	system_u:object_r:thin_aeolus_configserver_lib_t:s0
 /var/lib/amanda/gnutar-lists(/.*)?	system_u:object_r:amanda_gnutarlists_t:s0
+/var/lib/containers/overlay2(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/imagefactory/images(/.*)?	system_u:object_r:virt_image_t:s0
 /var/lib/stickshift/\.httpd\.d(/.*)?	system_u:object_r:httpd_config_t:s0
 /var/log/aeolus-configserver(/.*)?	system_u:object_r:thin_aeolus_configserver_log_t:s0
@@ -2944,6 +3028,7 @@
 /usr/lib/systemd/system/conman.*	--	system_u:object_r:conman_unit_file_t:s0
 /usr/lib/systemd/system/dhcpcd.*	--	system_u:object_r:dhcpd_unit_file_t:s0
 /usr/lib/systemd/system/dhcpd6.*	--	system_u:object_r:dhcpd_unit_file_t:s0
+/usr/lib/systemd/system/docker.*	--	system_u:object_r:container_unit_file_t:s0
 /usr/lib/systemd/system/hsqldb.*	--	system_u:object_r:hsqldb_unit_file_t:s0
 /usr/lib/systemd/system/mdmon@.*	--	system_u:object_r:mdadm_unit_file_t:s0
 /usr/lib/systemd/system/mongod.*	--	system_u:object_r:mongod_unit_file_t:s0
@@ -2975,6 +3060,7 @@
 /usr/share/pki/ca-certificates(/.*)?	system_u:object_r:cert_t:s0
 /usr/share/pki/ca-trust-source(/.*)?	system_u:object_r:cert_t:s0
 /var/lib/arpwatch/\.esmtp_queue(/.*)?	system_u:object_r:mail_home_rw_t:s0
+/var/lib/docker-latest/overlay(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/spamassassin/compiled(/.*)?	system_u:object_r:spamd_compiled_t:s0
 /var/lib/tftpboot/pxelinux\.cfg(/.*)?	system_u:object_r:cobbler_var_lib_t:s0
 /var/named/chroot/var/run/dbus(/.*)?	system_u:object_r:system_dbusd_var_run_t:s0
@@ -3028,6 +3114,7 @@
 /usr/libexec/zoneminder/cgi-bin(/.*)?	system_u:object_r:zoneminder_script_exec_t:s0
 /usr/share/w3c-markup-validator(/.*)?	system_u:object_r:w3c_validator_content_t:s0
 /var/lib/clamav-unofficial-sigs(/.*)?	system_u:object_r:antivirus_db_t:s0
+/var/lib/docker-latest/overlay2(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/zabbix/externalscripts(/.*)?	system_u:object_r:zabbix_script_exec_t:s0
 /var/run/udev-configure-printer(/.*)?	system_u:object_r:cupsd_config_var_run_t:s0
 /var/lib/spamassassin/compiled/.*\.so.*	--	system_u:object_r:lib_t:s0
@@ -3046,6 +3133,7 @@
 /usr/lib/systemd/system/netlabel.*	--	system_u:object_r:netlabel_mgmt_unit_file_t:s0
 /usr/lib/systemd/system/vmtoolsd.*	--	system_u:object_r:vmtools_unit_file_t:s0
 /usr/libexec/polkit-grant-helper.*	--	system_u:object_r:policykit_grant_exec_t:s0
+/usr/local/libexec/docker/docker.*	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/share/munin/plugins/apache_.*	--	system_u:object_r:services_munin_plugin_exec_t:s0
 /usr/share/munin/plugins/hddtemp.*	--	system_u:object_r:disk_munin_plugin_exec_t:s0
 /usr/share/munin/plugins/tomcat_.*	--	system_u:object_r:services_munin_plugin_exec_t:s0
@@ -3091,6 +3179,7 @@
 /usr/lib/systemd/system/bumblebeed.*	--	system_u:object_r:bumblebee_unit_file_t:s0
 /usr/lib/systemd/system/cloud-init.*	--	system_u:object_r:cloud_init_unit_file_t:s0
 /usr/lib/systemd/system/conntrackd.*	--	system_u:object_r:conntrackd_unit_file_t:s0
+/usr/lib/systemd/system/containerd.*	--	system_u:object_r:container_unit_file_t:s0
 /usr/lib/systemd/system/hypervvssd.*	--	system_u:object_r:hypervvssd_unit_file_t:s0
 /usr/lib/systemd/system/keepalived.*	--	system_u:object_r:keepalived_unit_file_t:s0
 /usr/lib/systemd/system/openwsmand.*	--	system_u:object_r:openwsman_unit_file_t:s0
@@ -3113,10 +3202,15 @@
 /opt/Symantec/scspagent/IDS/system(/.*)?	system_u:object_r:var_log_t:s0
 /usr/share/awstats/wwwroot/cgi-bin(/.*)?	system_u:object_r:awstats_script_exec_t:s0
 /usr/share/wordpress-mu/wp-content(/.*)?	system_u:object_r:httpd_sys_rw_content_t:s0
+/var/lib/containers/overlay-images(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containers/overlay-layers(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/lib/samba/winbindd_privileged(/.*)?	system_u:object_r:winbind_var_run_t:s0
 /var/named/chroot/var/named/slaves(/.*)?	system_u:object_r:named_cache_t:s0
 /usr/lib/systemd/system/sbd_remote.service	--	system_u:object_r:sbd_unit_file_t:s0
 /usr/libexec/qemu-ga/fsfreeze-hook.d(/.*)?	system_u:object_r:virt_qemu_ga_unconfined_exec_t:s0
+/var/lib/docker-latest/containers/.*/hosts	system_u:object_r:container_ro_file_t:s0
+/var/lib/docker-latest/containers/.*/.*\.log	system_u:object_r:container_log_t:s0
+/var/lib/docker-latest/containers/.*/hostname	system_u:object_r:container_ro_file_t:s0
 /usr/lib/courier/courier/courierpop.*	--	system_u:object_r:courier_pop_exec_t:s0
 /usr/lib/systemd/system/console-kit.*	--	system_u:object_r:consolekit_unit_file_t:s0
 /usr/lib/systemd/system/ipmidetectd.*	--	system_u:object_r:freeipmi_ipmidetectd_unit_file_t:s0
@@ -3129,6 +3223,9 @@
 /usr/lib/systemd/system-generators/[^/]*	--	system_u:object_r:init_exec_t:s0
 /var/named/chroot/etc/named\.rfc1912.zones	--	system_u:object_r:named_conf_t:s0
 /var/lib/NetworkManager-fortisslvpn(/.*)?	system_u:object_r:openfortivpn_var_lib_t:s0
+/var/lib/containers/overlay2-images(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containers/overlay2-layers(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containers/storage/overlay(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/named/chroot/var/named/dynamic(/.*)?	system_u:object_r:named_cache_t:s0
 /var/run/systemd/ask-password-block(/.*)?	system_u:object_r:systemd_passwd_var_run_t:s0
 /var/www/openshift/broker/httpd/run(/.*)?	system_u:object_r:httpd_var_run_t:s0
@@ -3143,11 +3240,13 @@
 /usr/share/collectd/collection3/bin/.*\.cgi	--	system_u:object_r:collectd_script_exec_t:s0
 /usr/lib/NetworkManager/dispatcher\.d(/.*)?	system_u:object_r:NetworkManager_initrc_exec_t:s0
 /var/cache/samba/winbindd_privileged(/.*)?	system_u:object_r:winbind_var_run_t:s0
+/var/lib/containers/storage/overlay2(/.*)?	system_u:object_r:container_ro_file_t:s0
 /var/www/openshift/broker/httpd/logs(/.*)?	system_u:object_r:httpd_log_t:s0
 /var/www/openshift/console/httpd/run(/.*)?	system_u:object_r:httpd_var_run_t:s0
 /usr/lib/systemd/system/rkt-metadata.socket	--	system_u:object_r:rkt_unit_file_t:s0
 /usr/lib/systemd/system/ModemManager.service	--	system_u:object_r:modemmanager_unit_file_t:s0
 /usr/lib/systemd/system/rkt-metadata.service	--	system_u:object_r:rkt_unit_file_t:s0
+/var/lib/containers/storage/volumes/[^/]*/.*	system_u:object_r:container_file_t:s0
 /usr/lib/systemd/system/systemd-hwdb.*\.service	--	system_u:object_r:systemd_hwdb_unit_file_t:s0
 /usr/lib/systemd/system/systemd-time.*\.service	--	system_u:object_r:systemd_timedated_unit_file_t:s0
 /usr/share/texlive/texmf/web2c/mktex(dir|nam|upd)	system_u:object_r:bin_t:s0
@@ -3200,9 +3299,13 @@
 /usr/lib/systemd/system/strongswan-swanctl.*	--	system_u:object_r:ipsec_mgmt_unit_file_t:s0
 /var/lib/likewise/db/lsass-adcache\.filedb\..*	--	system_u:object_r:lsassd_var_lib_t:s0
 /usr/share/system-config-selinux/polgengui.py	--	system_u:object_r:bin_t:s0
+/var/lib/containers/storage/overlay-images(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containers/storage/overlay-layers(/.*)?	system_u:object_r:container_ro_file_t:s0
 /usr/lib/systemd/system/speech-dispatcherd.service	--	system_u:object_r:speech_dispatcher_unit_file_t:s0
 /usr/lib/xorg/modules/drivers/fglrx_drv\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/xorg/modules/extensions/libglx\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
+/var/lib/containers/storage/overlay2-images(/.*)?	system_u:object_r:container_ro_file_t:s0
+/var/lib/containers/storage/overlay2-layers(/.*)?	system_u:object_r:container_ro_file_t:s0
 /usr/x11R6/lib/modules/extensions/libglx\.so(\.[^/]*)*	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/policykit/polkit-resolve-exe-helper.*	--	system_u:object_r:policykit_resolve_exec_t:s0
 /usr/lib/systemd/system/fwupd-offline-update.*	--	system_u:object_r:fwupd_unit_file_t:s0
@@ -3605,6 +3708,7 @@
 /dev/vrtpanel	-c	system_u:object_r:mouse_device_t:s0
 /dev/z90crypt	-c	system_u:object_r:crypt_device_t:s0
 /dev/xconsole	-p	system_u:object_r:xconsole_device_t:s0
+/root/\.docker	system_u:object_r:container_home_t:s0
 /root/\.shosts	system_u:object_r:ssh_home_t:s0
 /tmp/\.journal	<<none>>
 /usr/\.journal	<<none>>
@@ -3817,6 +3921,7 @@
 /usr/bin/Xephyr	--	system_u:object_r:xserver_exec_t:s0
 /usr/bin/brltty	--	system_u:object_r:brltty_exec_t:s0
 /usr/bin/catdic	--	system_u:object_r:canna_exec_t:s0
+/usr/bin/conmon	--	system_u:object_r:conmon_exec_t:s0
 /usr/bin/envdir	--	system_u:object_r:svc_run_exec_t:s0
 /usr/bin/fghack	--	system_u:object_r:svc_run_exec_t:s0
 /usr/bin/gataxx	--	system_u:object_r:games_exec_t:s0
@@ -3841,6 +3946,7 @@
 /usr/bin/pesign	--	system_u:object_r:pesign_exec_t:s0
 /usr/bin/pg_ctl	--	system_u:object_r:postgresql_exec_t:s0
 /usr/bin/pmwebd	--	system_u:object_r:pcp_pmwebd_exec_t:s0
+/usr/bin/podman	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/bin/polipo	--	system_u:object_r:polipo_exec_t:s0
 /usr/bin/puppet	--	system_u:object_r:puppetagent_exec_t:s0
 /usr/bin/pwauth	--	system_u:object_r:pwauth_exec_t:s0
@@ -4614,6 +4720,7 @@
 /usr/sbin/xenstored	--	system_u:object_r:xenstored_exec_t:s0
 /var/named/named\.ca	--	system_u:object_r:named_conf_t:s0
 /var/run/auditd\.pid	--	system_u:object_r:auditd_var_run_t:s0
+/var/run/docker\.pid	--	system_u:object_r:container_var_run_t:s0
 /var/run/epylog\.pid	--	system_u:object_r:logwatch_var_run_t:s0
 /var/run/gdomap\.pid	--	system_u:object_r:gdomap_var_run_t:s0
 /var/run/groupd\.pid	--	system_u:object_r:groupd_var_run_t:s0
@@ -4792,6 +4899,7 @@
 /dev/network_latency	-c	system_u:object_r:netcontrol_device_t:s0
 /var/run/auditd_sock	-s	system_u:object_r:auditd_var_run_t:s0
 /var/run/charon\.vici	-s	system_u:object_r:ipsec_var_run_t:s0
+/var/run/docker\.sock	-s	system_u:object_r:container_var_run_t:s0
 /var/run/gcache_port	-s	system_u:object_r:httpd_var_run_t:s0
 /tmp/hsperfdata_root	system_u:object_r:user_tmp_t:s0
 /var/lib/random-seed	system_u:object_r:random_seed_t:s0
@@ -4878,6 +4986,8 @@
 /usr/libexec/dcc/dccm	--	system_u:object_r:dccm_exec_t:s0
 /usr/libexec/pt_chown	--	system_u:object_r:ptchown_exec_t:s0
 /usr/libexec/stratisd	--	system_u:object_r:stratisd_exec_t:s0
+/usr/local/bin/conmon	--	system_u:object_r:conmon_exec_t:s0
+/usr/local/bin/podman	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/sbin/MailScanner	--	system_u:object_r:mscan_exec_t:s0
 /usr/sbin/authdaemond	--	system_u:object_r:courier_authdaemon_exec_t:s0
 /usr/sbin/cachefilesd	--	system_u:object_r:cachefilesd_exec_t:s0
@@ -5425,6 +5535,7 @@
 /usr/bin/nova-xvpvncproxy	--	system_u:object_r:nova_exec_t:s0
 /usr/bin/obex-data-server	--	system_u:object_r:obex_exec_t:s0
 /usr/bin/quantum-l3-agent	--	system_u:object_r:neutron_exec_t:s0
+/usr/bin/rhel-push-plugin	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/bin/systemd-tmpfiles	--	system_u:object_r:systemd_tmpfiles_exec_t:s0
 /usr/bin/vios-proxy-guest	--	system_u:object_r:virtd_exec_t:s0
 /usr/bin/vmware-smbpasswd	--	system_u:object_r:vmware_host_exec_t:s0
@@ -5569,6 +5680,7 @@
 /usr/sbin/multipath\.static	--	system_u:object_r:lvm_exec_t:s0
 /usr/sbin/pwhistory_helper	--	system_u:object_r:updpwd_exec_t:s0
 /usr/sbin/restart-ds-admin	--	system_u:object_r:dirsrvadmin_exec_t:s0
+/usr/sbin/rhel-push-plugin	--	system_u:object_r:container_runtime_exec_t:s0
 /usr/sbin/sendmail\.postfix	--	system_u:object_r:sendmail_exec_t:s0
 /var/lib/tftpboot/menu\.c32	--	system_u:object_r:cobbler_var_lib_t:s0
 /var/lock/subsys/denyhosts	--	system_u:object_r:denyhosts_var_lock_t:s0
@@ -6159,6 +6271,7 @@
 /usr/Zend/lib/ZendExtensionManager\.so	system_u:object_r:textrel_shlib_t:s0
 /etc/rc\.d/init\.d/mountall-bootclean\.sh	--	system_u:object_r:tmpreaper_exec_t:s0
 /etc/rc\.d/init\.d/mountnfs-bootclean\.sh	--	system_u:object_r:tmpreaper_exec_t:s0
+/usr/lib/docker/docker-novolume-plugin	--	system_u:object_r:container_auth_exec_t:s0
 /usr/lib/ladspa/bandpass_a_iir_1893\.so	--	system_u:object_r:textrel_shlib_t:s0
 /usr/lib/man2html/cgi-bin/man/man2html	--	system_u:object_r:man2html_script_exec_t:s0
 /usr/lib/nagios/plugins/check_disk_smb	--	system_u:object_r:nagios_checkdisk_plugin_exec_t:s0

@@ -154,8 +154,15 @@
 /home/[^/]+/\.cache/telepathy/avatars/gabble(/.*)?	unconfined_u:object_r:telepathy_gabble_cache_home_t:s0
 /home/[^/]+/\.local/share/gnome-boxes/images(/.*)?	unconfined_u:object_r:svirt_home_t:s0
 /home/[^/]+/\.local/share/telepathy/mission-control(/.*)?	unconfined_u:object_r:telepathy_mission_control_data_home_t:s0
+/home/[^/]+/\.local/share/containers/storage/overlay(/.*)?	unconfined_u:object_r:container_ro_file_t:s0
+/home/[^/]+/\.local/share/containers/storage/overlay2(/.*)?	unconfined_u:object_r:container_ro_file_t:s0
+/home/[^/]+/\.local/share/containers/storage/volumes/[^/]*/.*	unconfined_u:object_r:container_file_t:s0
 /home/[^/]+/\.local/share/networkmanagement/certificates(/.*)?	unconfined_u:object_r:home_cert_t:s0
 /home/[^/]+/\.kde/share/apps/networkmanagement/certificates(/.*)?	unconfined_u:object_r:home_cert_t:s0
+/home/[^/]+/\.local/share/containers/storage/overlay-images(/.*)?	unconfined_u:object_r:container_ro_file_t:s0
+/home/[^/]+/\.local/share/containers/storage/overlay-layers(/.*)?	unconfined_u:object_r:container_ro_file_t:s0
+/home/[^/]+/\.local/share/containers/storage/overlay2-images(/.*)?	unconfined_u:object_r:container_ro_file_t:s0
+/home/[^/]+/\.local/share/containers/storage/overlay2-layers(/.*)?	unconfined_u:object_r:container_ro_file_t:s0
 /home/[^/]+	-d	unconfined_u:object_r:user_home_dir_t:s0
 /home/[^/]+	-l	unconfined_u:object_r:user_home_dir_t:s0
 /home/[^/]+/abc	--	unconfined_u:object_r:mozilla_home_t:s0
