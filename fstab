@@ -14,3 +14,4 @@ UUID=164dbf42-6c2f-4fd2-bcb3-23ebb37ed497 /boot                   xfs     defaul
 /dev/mapper/ol-home     /home                   xfs     defaults        0 0
 /dev/mapper/ol-var      /var                    xfs     defaults        0 0
 /dev/mapper/ol-swap     none                    swap    defaults        0 0
+/dev/sdb1/var/lib/Docker ext4 defaults 0 0
