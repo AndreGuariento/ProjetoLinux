@@ -1,6 +1,6 @@
 # ProjetoLinux
 
-NÃO HA VERSIONAMENTO DA MAQUINA 2 POIS ELA É UM CLONE DA MAQUINA 1 E A UNICA DIFERENÇA ENTRE ELAS É O HOSTNAME E A PRIVATE KEY.
+Não há versionamento da Maquina 2 pois ela é um clone da Maquina 1, fazendo com que tudo dela seja exatamente igual que a 1 com excessão do hostname e a private key.
 
 Passo a passo da instalação e configuração do Oracle Linux: 
 
